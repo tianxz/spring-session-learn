@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="scripts/jquery.js"></script>
+</head>
+<body>
+<script>
+    var isSafari = (/Safari/.test(navigator.userAgent));
+    var firstTimeSession = 0;
+
+    var data = [
+        {
+            "name": "SECURITY:CODE",
+            "value": "84256"
+        }
+    ];
+
+    function submitSessionForm() {
+        if (firstTimeSession == 0) {
+            firstTimeSession = 1;
+
+            var input = $("#sessionform input[name='data']").val(JSON.stringify(data));
+
+            $("#sessionform").submit();
+        }
+    }
+
+    if (isSafari) {
+        $("body").append('<iframe id="sessionframe" name="sessionframe" onload="submitSessionForm()" src="http://mt.home.com:8081/home/blank" style="display:none;"></iframe><form id="sessionform"style="visibility: hidden"  enctype="multipart/form-data" action="http://mt.home.com:8081/home/name-value-part" target="sessionframe" method="POST"><input name="data"></form>');
+    }
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "http://mt.home.com:8081/home/name-value",
+            type: "GET",
+            dataType: 'jsonp',
+            async: false,
+            complete: function (a, b) {
+                console.log(a);
+                console.log(b);
+            }
+        });
+    });
+</script>
+</body>
+</html>

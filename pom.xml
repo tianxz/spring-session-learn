@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.vinci</groupId>
+    <artifactId>spring-session-learn</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>spring-session-web</module>
+        <module>spring-session-server</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.jodd</groupId>
+            <artifactId>jodd-core</artifactId>
+            <version>${jodd.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session</artifactId>
+            <version>1.3.1.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>1.5.8.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>1.5.8.RELEASE</version>
+        </dependency>
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>${nexus.uri}/nexus/content/repositories/central/</url>
+        </repository>
+        <repository>
+            <id>f1-snapshots</id>
+            <name>F1-Snapshots</name>
+            <url>${nexus.uri}/nexus/content/repositories/F1-Snapshots/</url>
+        </repository>
+        <repository>
+            <id>vinci-snapshots</id>
+            <name>Vinci Snapshots</name>
+            <url>${nexus.uri}/nexus/content/repositories/vinci-snapshots/</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <jodd.version>3.9.1</jodd.version>
+        <spring.boot.version>1.5.8.RELEASE</spring.boot.version>
+        <spring.version>4.3.12.RELEASE</spring.version>
+
+        <!--database-->
+        <druid.version>1.1.3</druid.version>
+        <mysql.connector.version>6.0.6</mysql.connector.version>
+
+        <!-- maven repositories -->
+        <nexus.uri>http://ttestplus.jointforce.com:8081</nexus.uri>
+
+        <!--maven plugin-->
+        <compiler.maven.plugin>3.6.1</compiler.maven.plugin>
+        <source.plugin>3.0.1</source.plugin>
+        <dependency.plugin>3.0.1</dependency.plugin>
+        <groovy.plugin>2.0</groovy.plugin>
+        <spring.boot.maven>1.5.2.RELEASE</spring.boot.maven>
+    </properties>
+</project>
